@@ -19,8 +19,21 @@ function driversLicense6(test) {
         let firstName = 'John';
         const yearOfBirth = 1990;
     }
-    console.log(firstName + ' born in  ' + yearOfBirth);
+    //    console.log(firstName + ' born in  ' + yearOfBirth);
 }
 
 driversLicense5(true);
 driversLicense6(true);
+
+
+/**
+ *
+ * Blocks and IIFEs
+ */
+
+{
+    const a = 3;
+    let b = 45;
+    console.log(a + b);
+}
+console.log(a + b);
