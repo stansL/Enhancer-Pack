@@ -81,3 +81,17 @@ const newAges = years.map(e => { //when more than one line of code
     return 2019 - e
 });
 console.log(newAges);
+
+//Demo the lexical this keyword in a lambda expression
+//can also be achieved using var self = this; kind of a hack
+const box = {
+    color: 'green',
+    position: 1,
+    clickMe: function () {
+        document.querySelector('.green').addEventListener('click', e =>
+            alert(`The color of the box number ${this.position} is ${this.color}`));
+    }
+}
+
+
+box.clickMe();
