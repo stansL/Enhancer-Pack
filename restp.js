@@ -34,3 +34,19 @@ function fullAge(limit, ...years) {
 }
 
 fullAge(5, 2015, 1999, 1987, 2017);
+
+
+/**
+ * Default Parameters
+ *
+ */
+
+var Smith = function (firstName, yearOfBirth, lastName = "default name", nationality = "default nationality") {
+    this.firstName = firstName;
+    this.yearOfBirth = yearOfBirth;
+    this.lastName = lastName;
+    this.nationality = nationality;
+};
+
+var sInstance = new Smith('Stanslaus', 1987);
+console.log(sInstance);
