@@ -24,36 +24,46 @@ class Park extends Establishment {
 
 
 class Street extends Establishment {
-    constructor(name, buildYear, streetLength) {
+    constructor(name, buildYear, streetLength, size = 3) {
         super(name, buildYear);
         this.streetLength = streetLength;
+        this.size = size;
     }
 
     classifyStreet() {
-        switch (this.streetLength) {
-            case 1: {
-                return "tiny";
-                break;
-            }
-            case 2: {
-                return "small";
-                break;
-            }
-            case 3:
-            default: {
-                return "normal";
-                break;
-            }
-            case 4: {
-                return "big";
-                break;
-            }
-            case 5: {
-                return "huge";
-                break;
-            }
+        const classification = new Map();
+        classification.set(1, 'tiny');
+        classification.set(2, 'small');
+        classification.set(3, 'normal');
+        classification.set(4, 'big');
+        classification.set(5, 'huge');
 
-        }
+        //        
+        //        switch (this.streetLength) {
+        //            case 1: {
+        //                return "tiny";
+        //                break;
+        //            }
+        //            case 2: {
+        //                return "small";
+        //                break;
+        //            }
+        //            case 3:
+        //            default: {
+        //                return "normal";
+        //                break;
+        //            }
+        //            case 4: {
+        //                return "big";
+        //                break;
+        //            }
+        //            case 5: {
+        //                return "huge";
+        //                break;
+        //            }
+        //
+        //        }
+        console.log(`${this.name} built on  ${this.buildYear} is a ${classification.get(size)}`);
     }
 }
 
