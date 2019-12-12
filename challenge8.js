@@ -63,27 +63,27 @@ class Street extends Establishment {
         //            }
         //
         //        }
-        console.log(`${this.name} built on  ${this.buildYear} is a ${classification.get(size)}`);
+        console.log(`${this.name} built on  ${this.buildYear} is a ${classification.get(size)} street. `);
     }
 }
 
+function computeAverage(elements) {
+    let result = elements.reduce((sum, current) => sum + current, 0);
+    return result / elements.length;
+}
 
 function computeAverageAge(parks) {
-    var sum = 0;
-    parks.forEach(park => sum += park.computeAge());
-    return sum / parks.length;
+    const ages = parks.map(el => el.computeAge());
+    return computeAverage(ages);
 }
+
 
 function parksWithMoreThan1000Trees(parks) {
     return parks.filter(park => park.numberOfTrees > 1000);
 }
 
-function computeStreetLengths(streets) {
-    var sum = 0;
-    streets.forEach(street => sum += street.streetLength);
-    return sum;
-}
 
 function computeStreetAv(streets) {
-    return computeStreetLengths / streets.length;
+    const lengths = streets.map(el => el.streetLength);
+    return computeAverage(lengths);
 }
