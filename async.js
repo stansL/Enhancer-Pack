@@ -49,3 +49,90 @@ const getReceipe = () => {
 
 
 getReceipe();
+
+
+//Promises
+const idsPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        //        reject([546, 238, 675, 762, 265, 908]);
+        resolve([546, 238, 675, 762, 265, 908]);
+
+    }, 3000);
+
+});
+
+const getRecipe = (id) => {
+    return new Promise((resolve, reject) => {
+        setTimeout((id) => {
+            const recipe = {
+                "id": 675,
+                "title": "Fresh Tomato Pasta",
+                "publisher": "Olemo"
+            }
+
+            resolve(recipe);
+
+        }, 3000, id);
+    });
+
+};
+
+const getPublisher = (publisher) => {
+    return new Promise((resolve, reject) => {
+        setTimeout((publisher) => {
+            const publisherDetails = {
+                "name": "Stanslaus Odhiambo",
+                "dob": 1987,
+                "gender": "Male",
+                "hobbies": ['tae-kwon-do', 'swimming']
+            };
+            resolve(`${publisher} : ${JSON.stringify(publisherDetails)}`);
+
+        }, 3000, publisher);
+    })
+
+};
+
+//const recipePromise = new Promise((resolve, reject) => {
+//    setTimeout((id) => {
+//        const recipe = {
+//            "id": 675,
+//            "title": "Fresh Tomato Pasta",
+//            "publisher": "Olemo"
+//        }
+//
+//        console.log(`Selected recipe id is: ${recipeId} and the details are ${JSON.stringify(recipe)}`);
+//
+//    }, 3000, id);
+//});
+
+//const publisherPromise = new Promise((resolve, reject) => {
+//    setTimeout((publisher) => {
+//        const publisherDetails = {
+//            "name": "Stanslaus Odhiambo",
+//            "dob": 1987,
+//            "gender": "Male",
+//            "hobbies": ['tae-kwon-do', 'swimming']
+//        }
+//        console.log(`Publisher : ${publisher} has the following details : ${JSON.stringify(publisherDetails)}`);
+//
+//    }, 3000, publisher);
+//});
+
+
+
+idsPromise
+    .then((ids) => {
+        console.log("The promised IDs: " + ids);
+        return getRecipe(ids[2]);
+    })
+    .then((recipe) => {
+        console.log("The returned recipe from the promise: " + JSON.stringify(recipe));
+        return getPublisher(recipe.publisher);
+    })
+    .then((publisher) => {
+        console.log("The returned Publisher from the promise: " + JSON.stringify(publisher));
+    })
+    .catch((error) => {
+        console.log("An error occured: " + error);
+    });
