@@ -13,10 +13,11 @@ var age = john[1];
 
 //ES6 destructuring
 
-const [firstName, ageInYear] = ['Agnes', 22];
+const [firstName, ageInYear, , academics] = ['Agnes', 22, 'Software Engineer', 4, 'Masters'];
 
 console.log(firstName);
 console.log(ageInYear);
+console.log(academics);
 
 
 const dan = {
