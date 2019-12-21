@@ -1,5 +1,5 @@
 const getRecipeIds = new Promise((resolve, reject) => {
-    console.log('Getting the list of recipee IDs......');
+    console.log('Getting the list of recipee IDs.....llllll.');
     setTimeout(() => {
         if (true) {
             const recipeIds = [123, 542, 457, 867, 324, 123, 654];
@@ -48,19 +48,35 @@ const getPublisherDetails = (publisher) => {
 }
 
 
-getRecipeIds.then((recipeIds) => {
-        console.log("Received IDs from the Server: ");
-        console.log(recipeIds);
-        return getRecipeById(recipeIds[2]);
+//getRecipeIds.then((recipeIds) => {
+//        console.log("Received IDs from the Server: ");
+//        console.log(recipeIds);
+//        return getRecipeById(recipeIds[2]);
+//
+//    })
+//    .then(recipe => {
+//        console.log(`Received Recipe: ${recipe}`);
+//        return getPublisherDetails(recipe.publisher);
+//    })
+//    .then((pDetails) => {
+//        console.log(pDetails);
+//    })
+//    .catch((error) => {
+//        console.log(`Fetching the ids encountered an error: ${error}`);
+//    });
 
-    })
-    .then(recipe => {
-        console.log(`Received Recipe: ${recipe}`);
-        return getPublisherDetails(recipe.publisher);
-    })
-    .then((pDetails) => {
-        console.log(pDetails);
-    })
-    .catch((error) => {
-        console.log(`Fetching the ids encountered an error: ${error}`);
-    });
+async function testAsync() {
+    const ids = await getRecipeIds;
+    console.log(ids);
+    const selectedRecipe = await getRecipeById(ids[4]);
+    console.log(selectedRecipe);
+    const pDetails = await getPublisherDetails(selectedRecipe.publisher);
+    console.log(pDetails);
+
+    return pDetails;
+}
+
+// This here won't work
+//const asyncReturn = testAsync();
+//console.log(asyncReturn);
+testAsync().then(el => console.log("From the async wait " + JSON.stringify(el)));
